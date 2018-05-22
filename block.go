@@ -15,8 +15,8 @@ type Block struct {
 }
 
 
-// NewBlock用于生成新块，参数需要Data和PrevBlockHash
-// 当前块的Hash会基于Data和PrevBlockHash计算得到
+// NewBlock用于生成新块，需要参数Data和PrevBlockHash
+// 当前块的Hash会根据Data和PrevBlockHash的计算
 func NewBlock(data string, prevBlockHash []byte) *Block {
 	block := &Block{
 		Timestamp:     time.Now().Unix(),
@@ -31,7 +31,6 @@ func NewBlock(data string, prevBlockHash []byte) *Block {
 
 
 // SetHash 设置当前块hash
-// Hash = sha256.Sum256(headers)
 func (b *Block) SetHash() {
 	timestamp := []byte(strconv.FormatInt(b.Timestamp, 10))
 	headers := bytes.Join([][]byte{b.PrevBlockHash, b.Data, timestamp}, []byte{})

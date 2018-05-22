@@ -1,4 +1,4 @@
-BINARY := go-chain
+BINARY := go-blockchain
 
 all: build run
 
